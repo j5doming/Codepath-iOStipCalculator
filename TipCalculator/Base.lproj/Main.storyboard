@@ -88,7 +88,13 @@
                             <outletCollection property="gestureRecognizers" destination="6Ek-3s-L6c" appends="YES" id="YVY-Up-XCc"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tip Calculator" id="mAS-rb-4cN"/>
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="mAS-rb-4cN">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="SBj-ep-TVY">
+                            <connections>
+                                <segue destination="3Ia-xY-xmC" kind="show" id="voY-tC-kWJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billField" destination="JnG-c1-nZw" id="XGu-wC-qsi"/>
                         <outlet property="tipControl" destination="Eqp-eN-BIr" id="wPH-6H-G7D"/>
@@ -104,6 +110,46 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1076" y="119.1904047976012"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="7tU-ZX-t1Z">
+            <objects>
+                <viewController id="3Ia-xY-xmC" customClass="SettingsViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5VA-3T-Fzz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NMJ-q2-tmj">
+                                <rect key="frame" x="16" y="135" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="15%"/>
+                                    <segment title="18%"/>
+                                    <segment title="20%"/>
+                                </segments>
+                                <connections>
+                                    <action selector="defaultPercentageSetting:" destination="3Ia-xY-xmC" eventType="valueChanged" id="kD0-qR-yfd"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default tip percentage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-Yi-yD3">
+                                <rect key="frame" x="102" y="106" width="171" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NV1-Hn-dRd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="YK3-h1-JMy"/>
+                    <connections>
+                        <outlet property="defaultPercentageControl" destination="NMJ-q2-tmj" id="xi8-HN-cnk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uVs-0g-gAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1919" y="119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BJm-Ms-4AA">

@@ -19,9 +19,38 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tipControl: UISegmentedControl!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // use this function to retreive default percentage from settings view
+        super.viewWillAppear(animated)
+        
+        // segment is retrieved from settings view
+        let segmentIndex = defaults.integer(forKey: "PercentageIdxDefault")
+        tipControl.selectedSegmentIndex = segmentIndex
+        
+//        print("Selected index from settings \(segmentIndex)")
+//        print("inside viewWillAppear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        print("inside view did appear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        print("inside view will disappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        print("inside view did disappear")
     }
 
     // on tap for main view, dismisses keyboard
