@@ -10,23 +10,25 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    
     // Access UserDefaults for persistence
     let defaults = UserDefaults.standard
     
     @IBOutlet weak var defaultPercentageControl: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         // ensures the default setting control has the most recent default segment selected
-        let segmentIndex = defaults.integer(forKey: "PercentageIdxDefault")
+        let segmentIndex = defaults.integer(forKey: Constants.idxDefault)
         defaultPercentageControl.selectedSegmentIndex = segmentIndex
+                
     }
     
-    
     @IBAction func defaultPercentageSetting(_ sender: Any) {
-        defaults.set(defaultPercentageControl.selectedSegmentIndex, forKey: "PercentageIdxDefault")
+        defaults.set(defaultPercentageControl.selectedSegmentIndex, forKey: Constants.idxDefault)
         print(defaultPercentageControl)
     }
     

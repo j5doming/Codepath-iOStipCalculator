@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				0D132EE021F85D9000290D4B /* AppDelegate.swift */,
-				0DD1F7E421F90B9600D2643F /* SettingsViewController.swift */,
 				0D132EE221F85D9000290D4B /* ViewController.swift */,
+				0DD1F7E421F90B9600D2643F /* SettingsViewController.swift */,
 				0D132EE421F85D9000290D4B /* Main.storyboard */,
 				0D132EE721F85D9200290D4B /* Assets.xcassets */,
 				0D132EE921F85D9200290D4B /* LaunchScreen.storyboard */,
@@ -437,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U2262DUJBQ;
 				INFOPLIST_FILE = TipCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -454,6 +455,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U2262DUJBQ;
 				INFOPLIST_FILE = TipCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

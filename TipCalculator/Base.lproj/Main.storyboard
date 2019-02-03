@@ -63,7 +63,7 @@
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="qks-Se-ffK"/>
                                 </connections>
                             </segmentedControl>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JnG-c1-nZw">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JnG-c1-nZw">
                                 <rect key="frame" x="237" y="102" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -97,6 +97,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="JnG-c1-nZw" id="XGu-wC-qsi"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="UQC-Ls-Bp7"/>
                         <outlet property="tipControl" destination="Eqp-eN-BIr" id="wPH-6H-G7D"/>
                         <outlet property="tipLabel" destination="3pb-rx-q99" id="zIM-Qr-08g"/>
                         <outlet property="totalLabel" destination="cak-80-XXO" id="w7c-23-a1J"/>
@@ -149,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uVs-0g-gAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1919" y="119"/>
+            <point key="canvasLocation" x="2264.8000000000002" y="118.29085457271366"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BJm-Ms-4AA">
