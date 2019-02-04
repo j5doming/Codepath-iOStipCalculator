@@ -19,7 +19,8 @@ struct Constants {
     static let dateOnTerminateKey = "date"
     static let billFieldTextKey = "bill"
     static let doubleTwoDecimalFormat = "%.2f"
-    static let timeToReenterAmount = 10.0
+    static let personCountStr = "personCount"
+    static let timeToReenterAmount = 0.2
     
     struct Curreny {
         static let US = "$"
@@ -41,19 +42,27 @@ class ViewController: UIViewController {
     
     @IBOutlet var mainView: UIView!
     
-    let defaults = UserDefaults.standard
-    var date: NSDate?
-    let notificationCenter = NotificationCenter.default
-
+    @IBOutlet weak var splitBillStepper: UIStepper!
     
+    @IBOutlet weak var personCountLabel: UILabel!
+    
+    @IBOutlet weak var perPersonLabel: UILabel!
+    
+    @IBOutlet weak var perPersonAmountLabel: UILabel!
+    
+    let defaults = UserDefaults.standard
+    let notificationCenter = NotificationCenter.default
+    
+    var date: NSDate?
+    var total: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // make keyboard appear on app launch
-        billField.becomeFirstResponder()
-
+//        billField.becomeFirstResponder()
+        splitBillStepper.minimumValue = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,11 +78,16 @@ class ViewController: UIViewController {
         
         // if app closed within 10 minutes of reopen, display previous bill amount
         if let oldDate = defaults.value(forKey: Constants.dateOnTerminateKey)  {
+            
             let timeInterval = (oldDate as! NSDate).timeIntervalSince(NSDate() as Date)
             
             if abs(timeInterval) / 60 < Constants.timeToReenterAmount {
                 billField.text = defaults.string(forKey: Constants.billFieldTextKey)
+                
                 calculateTip(self)
+                
+                splitBillStepper.value = Double(defaults.integer(forKey: Constants.personCountStr))
+                splitBill(self)
             } else {
                 billField.text = ""
             }
@@ -110,14 +124,38 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
         let total = bill + tip
         
+        self.total = total
+        
         // update tip and total labels
         tipLabel.text = String(format: Constants.Curreny.US + Constants.doubleTwoDecimalFormat, tip)
         totalLabel.text = String(format: Constants.Curreny.US + Constants.doubleTwoDecimalFormat, total)
     }
     
+    // calculate bill split across multiple people
+    @IBAction func splitBill(_ sender: Any) {
+        let personCount = Int(splitBillStepper.value)
+        print(personCount)
+        
+        if personCount > 1 {
+            perPersonLabel.isHidden = false
+            perPersonAmountLabel.isHidden = false
+            perPersonAmountLabel.text = String(format: Constants.Curreny.US + Constants.doubleTwoDecimalFormat, (total ?? 0) / Double(personCount))
+            personCountLabel.text = "\(personCount) Persons"
+        } else {
+            perPersonLabel.isHidden = true
+            perPersonAmountLabel.isHidden = true
+            personCountLabel.text = "1 Person"
+        }
+        
+        
+    }
+    
+    
     // this is going to handle when the app terminates 
     @objc func handleTerminationOrResign(_ notification: Notification) {
         defaults.set(NSDate() as Date, forKey: Constants.dateOnTerminateKey)
+        
+        defaults.set(Int(splitBillStepper.value), forKey: Constants.personCountStr)
     }
     
     
